@@ -5422,4 +5422,21 @@
   .bxs-zoom-out:before {
     content: "\ef0b";
   }
+
+  .bx1-googleScholar:before {
+    content: ""; /* This is necessary but should be empty */
+    display: inline-block; /* Makes the element behave like an image */
+    width: 24px; /* Width of the icon */
+    height: 24px; /* Height of the icon */
+    /* background-color: whitesmoke; */
+    background-image: url('static/img/google-scholar-24_24.png'); /* Path to your icon image */
+    background-size: contain; /* Ensures the image covers the whole area */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    vertical-align: middle; /* Aligns the icon properly inline */
+    display: inline-flex; /* Center content */
+    justify-content: center; /* Align image horizontally */
+    align-items: center; /* Align image vertically */
+    overflow: hidden; /* Ensures no overflow of the image */
+  }
+  
   

@@ -1,0 +1,22 @@
+.google-scholar {
+    background: #fff; /* White background to stand out */
+    border-radius: 100%; /* Circle shape */
+    width: 36px; /* Consistent width with other icons */
+    height: 36px; /* Consistent height with other icons */
+    display: inline-flex; /* Center content */
+    justify-content: center; /* Align image horizontally */
+    align-items: center; /* Align image vertically */
+    overflow: hidden; /* Ensures no overflow of the image */
+}
+
+.google-scholar img {
+    width: 100%;  /* Adjust size as needed */
+    height: auto;  /* Maintain aspect ratio */
+    vertical-align: middle;  /* Align vertically */
+    margin: auto;  /* Center horizontally */
+}
+
+
+.google-scholar:hover {
+    background: #e8e8e8; /* Light grey background on hover for visual feedback */
+}

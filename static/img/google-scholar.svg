@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   fill="#000000"
+   width="1200"
+   height="1200"
+   viewBox="0 0 36 36"
+   role="img"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="google-scholar.svg"
+   inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#111111"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.45493525"
+     inkscape:cx="406.65128"
+     inkscape:cy="622.06655"
+     inkscape:window-width="1440"
+     inkscape:window-height="876"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1"
+     showgrid="false" />
+  <circle
+     style="fill:#1a1a1a;stroke-width:0.0443011"
+     id="path2"
+     cx="18"
+     cy="18"
+     r="18" />
+  <path
+     d="M 11.241999,19.769 6.0000005,15.5 18,5.9999994 30,15.5 24.757999,19.769 c -1.21,-2.52 -3.78,-4.269 -6.757999,-4.269 -2.977001,0 -5.548001,1.748 -6.758001,4.269 z m 6.758,-3.769 a 7.0000003,7.0000003 0 1 0 0,14 7.0000003,7.0000003 0 0 0 0,-14 z"
+     id="path1"
+     style="fill:#f9f9f9" />
+</svg>
