@@ -39,8 +39,5 @@ This repository contains the source code for my personal portfolio website, desi
 This project leverages open-source technologies to minimize operational costs. The monthly expense for the VPS is approximately $4, with a one-time domain registration fee of $24 for two years.
 
 ## Conclusion
-This portfolio website is a testament to my ability to design, develop, and deploy a full-stack web application using contemporary technologies in a cost-effective manner. For more information on this project, please feel free to contact me or open an issue in this repository.
+This portfolio website is a testament to my ability to design, develop, and deploy a full-stack web application using contemporary technologies in a cost-effective manner. For more information on this project, please contact me or open an issue in this repository.
 
----
-
-This `README.md` provides a comprehensive overview of your project, including technical details and setup instructions. Adjust the repository URL and any specific setup details according to your actual configuration and hosting specifics.
