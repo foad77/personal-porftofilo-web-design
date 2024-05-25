@@ -1,7 +1,3 @@
-Certainly! Below is a sample `README.md` text for your GitHub repository that includes a description of your personal portfolio website project, incorporating the Bootstrap template link:
-
----
-
 # Personal Portfolio Website
 
 ## Project Overview
