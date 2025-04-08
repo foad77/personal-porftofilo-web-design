@@ -1,12 +1,17 @@
 from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
-import os
+import os, ssl
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import traceback
+from loguru import logger
 
 app = Flask(__name__)
+
+
+# Create a default SSL context
+context = ssl.create_default_context()
 
 # Load environment variables from config.env
 load_dotenv('config.env')
@@ -15,8 +20,15 @@ load_dotenv('config.env')
 def home():
     return render_template('index.html')
 
+# Set up Loguru
+log_path = os.path.join("/home/Web/My_flask_app", 'flask_app_log.txt')
+logger.add(log_path, level="DEBUG", format="{time} - {level} - {message}")
+
+logger.info("Logging setup complete. Test log entry.")
+
 @app.route('/contact', methods=['POST'])
 def handle_contact_form():
+    logger.debug("handle_contact_form called")
     name = request.form.get('name')
     email = request.form.get('email')
     subject = request.form.get('subject')
@@ -24,15 +36,17 @@ def handle_contact_form():
 
     try:
         smtp_server = os.getenv('SENDINBLUE_SMTP_SERVER')
-        smtp_port = int(os.getenv('SENDINBLUE_SMTP_PORT'))
+        smtp_server = smtp_server.strip()
+        smtp_port = 587
         smtp_user = os.getenv('SENDINBLUE_USERNAME')
         smtp_password = os.getenv('SENDINBLUE_PASSWORD')
         recipient_email = os.getenv('RECIPIENT_EMAIL')
 
-        print(f"SMTP Server: {smtp_server}")
-        print(f"SMTP Port: {smtp_port}")
-        print(f"SMTP User: {smtp_user}")
-        print(f"Recipient Email: {recipient_email}")
+        logger.info(f"SMTP Server: {smtp_server}")
+        logger.info(f"SMTP Port: {smtp_port}")
+        logger.info(f"SMTP User: {smtp_user}")
+        logger.info(f"Recipient Email: {recipient_email}")
+
         msg = MIMEMultipart()
         msg['From'] = 'foad@drfoadnajafi.tech'
         msg['To'] = recipient_email
@@ -41,22 +55,24 @@ def handle_contact_form():
         body = f"Name: {name}\nEmail: {email}\nSubject: {subject}\nMessage: {message}"
         msg.attach(MIMEText(body, 'plain'))
 
-        print("Connecting to SMTP server...")
-        server = smtplib.SMTP(smtp_server, smtp_port)
-        print("Starting TLS...")
-        server.starttls()
-        print("Logging in...")
+        logger.info("Connecting to SMTP server...")
+        server = smtplib.SMTP(smtp_server, smtp_port,timeout=10)
+        server.ehlo()
+        logger.info("Starting TLS...")
+        logger.debug(f"SMTP Server before starttls: {smtp_server}")
+        server.starttls(context=context)
+        logger.info("Logging in...")
         server.login(smtp_user, smtp_password)
-        print("Sending email...")
+        logger.info("Sending email...")
         server.sendmail('foad@drfoadnajafi.tech', recipient_email, msg.as_string())
-        print("Quitting server...")
+        logger.info("Quitting server...")
         server.quit()
 
-        print("Email sent successfully!")
+        logger.info("Email sent successfully!")
         return jsonify({'success': True, 'message': 'Email sent successfully'}), 200
     except Exception as e:
-        print(f"Error: {str(e)}")
-        print(traceback.format_exc())
+        logger.error(f"Error: {str(e)}")
+        logger.error(traceback.format_exc())
         return jsonify({'success': False, 'error': str(e)}), 500
 
 if __name__ == '__main__':
