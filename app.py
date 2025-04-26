@@ -6,6 +6,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import traceback
 from loguru import logger
+from models import Session, Contact
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -21,8 +23,8 @@ def home():
     return render_template('index.html')
 
 # Set up Loguru
-log_path = os.path.join("/home/Web/My_flask_app", 'flask_app_log.txt')
-logger.add(log_path, level="DEBUG", format="{time} - {level} - {message}")
+#log_path = os.path.join("/home/Web/My_flask_app", 'flask_app_log.txt')
+logger.add('flask_app_log.txt', level="DEBUG", format="{time} - {level} - {message}")
 
 logger.info("Logging setup complete. Test log entry.")
 
@@ -33,6 +35,28 @@ def handle_contact_form():
     email = request.form.get('email')
     subject = request.form.get('subject')
     message = request.form.get('message')
+
+
+    # Save the contact form data to the database
+    session = Session()
+    try:
+        new_contact = Contact(
+            name=name,
+            email=email,
+            subject=subject,
+            message=message,
+            timestamp=datetime.now()
+        )
+        session.add(new_contact)
+        session.commit()
+        logger.info("Contact form data saved to database.")
+        return jsonify({'success': True, 'message': 'Data saved successfully'}), 200
+    except Exception as e:
+        session.rollback()
+        logger.error(f"Database error: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+    finally:
+        session.close()
 
     try:
         smtp_server = os.getenv('SENDINBLUE_SMTP_SERVER')
