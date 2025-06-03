@@ -1,1 +1,1 @@
-this sectino is created by foad to replace the twitter icon with google scholar icons
+this section is created by foad to replace the twitter icon with google scholar icons
