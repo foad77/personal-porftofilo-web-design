@@ -50,7 +50,6 @@ def handle_contact_form():
         session.add(new_contact)
         session.commit()
         logger.info("Contact form data saved to database.")
-        return jsonify({'success': True, 'message': 'Data saved successfully'}), 200
     except Exception as e:
         session.rollback()
         logger.error(f"Database error: {str(e)}")
