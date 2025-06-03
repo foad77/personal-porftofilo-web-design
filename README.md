@@ -24,7 +24,7 @@ This repository contains the source code for my [personal portfolio website](HTT
 3. **Set Up the Flask Application:**
    Navigate to your project directory and install dependencies:
    ```bash
-   cd portfolio-website
+   cd personal-porftofilo-web-design
    pip3 install -r requirements.txt
    ```
 4. **Configure Apache to Serve the Flask App:**
